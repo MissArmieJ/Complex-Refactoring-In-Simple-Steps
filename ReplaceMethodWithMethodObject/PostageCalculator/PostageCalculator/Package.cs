@@ -6,6 +6,7 @@
         private readonly int _height;
         private readonly int _width;
         private readonly int _depth;
+        private SizedPackage _sizedPackage;
 
         public Package(int weight, int height, int width, int depth)
         {
@@ -13,19 +14,25 @@
             _height = height;
             _width = width;
             _depth = depth;
+            _sizedPackage = CreateSizedPackage();
         }
 
         public decimal PostageInBaseCurrency()
         {
+            return _sizedPackage.PostageInBaseCurrency();
+        }
+
+        private SizedPackage CreateSizedPackage()
+        {
             if (IsSmall())
             {
-                return new SmallPackage().PostageInBaseCurrency();
+                return new SmallPackage();
             }
             if (IsMedium())
             {
-                return new MediumPackage(_weight).PostageInBaseCurrency();
+                return new MediumPackage(_weight);
             }
-            return new LargePackage(_weight, _height, _width, _depth).PostageInBaseCurrency();
+            return new LargePackage(_weight, _height, _width, _depth);
         }
 
         private bool IsMedium()

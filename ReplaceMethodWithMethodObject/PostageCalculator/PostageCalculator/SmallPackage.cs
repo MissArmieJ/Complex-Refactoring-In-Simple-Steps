@@ -1,6 +1,6 @@
 namespace PostageCalculator
 {
-    public class SmallPackage
+    public class SmallPackage : SizedPackage
     {
         public decimal PostageInBaseCurrency()
         {

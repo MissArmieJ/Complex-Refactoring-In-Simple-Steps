@@ -1,6 +1,6 @@
 namespace PostageCalculator
 {
-    public class MediumPackage
+    public class MediumPackage : SizedPackage
     {
         private readonly int _weight;
 
@@ -9,7 +9,7 @@ namespace PostageCalculator
             _weight = weight;
         }
 
-        public int PostageInBaseCurrency()
+        public decimal PostageInBaseCurrency()
         {
             return _weight * 4;
         }

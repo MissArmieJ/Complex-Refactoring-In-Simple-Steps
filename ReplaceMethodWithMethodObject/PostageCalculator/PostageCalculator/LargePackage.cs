@@ -2,7 +2,7 @@
 
 namespace PostageCalculator
 {
-    public class LargePackage
+    public class LargePackage : SizedPackage
     {
         private readonly int _weight;
         private readonly int _height;
