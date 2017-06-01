@@ -1,43 +1,5 @@
-﻿using System;
-
-namespace PostageCalculator
+﻿namespace PostageCalculator
 {
-    public class MediumPackage
-    {
-        public MediumPackage(int weight)
-        {
-            Weight = weight;
-        }
-
-        public int Weight { get; private set; }
-
-        public int MediumPackagePostageInBaseCurrency()
-        {
-            return this.Weight * 4;
-        }
-    }
-
-    public class LargePackage
-    {
-        public LargePackage(int weight, int height, int width, int depth)
-        {
-            Weight = weight;
-            Height = height;
-            Width = width;
-            Depth = depth;
-        }
-
-        public int Weight { get; private set; }
-        public int Height { get; private set; }
-        public int Width { get; private set; }
-        public int Depth { get; private set; }
-
-        public decimal LargePackagePostageInBaseCurrency()
-        {
-            return Math.Max(this.Weight, this.Height*this.Width*this.Depth/1000m)*6;
-        }
-    }
-
     public class Package
     {
         private readonly int _weight;
