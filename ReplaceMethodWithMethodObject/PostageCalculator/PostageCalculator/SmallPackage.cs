@@ -2,7 +2,7 @@ namespace PostageCalculator
 {
     public class SmallPackage
     {
-        public static decimal SmallPackagePostageInBaseCurrency()
+        public decimal PostageInBaseCurrency()
         {
             return 120m;
         }

@@ -19,13 +19,13 @@
         {
             if (IsSmall())
             {
-                return SmallPackage.SmallPackagePostageInBaseCurrency();
+                return new SmallPackage().PostageInBaseCurrency();
             }
             if (IsMedium())
             {
-                return new MediumPackage(_weight).MediumPackagePostageInBaseCurrency();
+                return new MediumPackage(_weight).PostageInBaseCurrency();
             }
-            return new LargePackage(_weight, _height, _width, _depth).LargePackagePostageInBaseCurrency();
+            return new LargePackage(_weight, _height, _width, _depth).PostageInBaseCurrency();
         }
 
         private bool IsMedium()
