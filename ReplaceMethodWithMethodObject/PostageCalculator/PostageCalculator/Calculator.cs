@@ -6,7 +6,8 @@ namespace PostageCalculator
     {
         public Money Calculate(int weight, int height, int width, int depth, Currency currency)
         {
-            var postageInBaseCurrency = new Package(weight, height, width, depth).PostageInBaseCurrency();
+            var package = Package.WithDimensions(weight, height, width, depth);
+            var postageInBaseCurrency = package.PostageInBaseCurrency();
             return ConvertCurrency(postageInBaseCurrency, currency);
         }
 

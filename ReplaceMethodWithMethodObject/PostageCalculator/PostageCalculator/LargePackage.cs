@@ -2,7 +2,7 @@
 
 namespace PostageCalculator
 {
-    public class LargePackage : SizedPackage
+    public class LargePackage : Package
     {
         private readonly int _weight;
         private readonly int _height;
@@ -17,7 +17,7 @@ namespace PostageCalculator
             _depth = depth;
         }
 
-        public decimal PostageInBaseCurrency()
+        public override decimal PostageInBaseCurrency()
         {
             return Math.Max(_weight, _height*_width*_depth/1000m)*6;
         }

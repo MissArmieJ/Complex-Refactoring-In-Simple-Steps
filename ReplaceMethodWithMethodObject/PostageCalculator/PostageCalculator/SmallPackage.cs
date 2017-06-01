@@ -1,8 +1,8 @@
 namespace PostageCalculator
 {
-    public class SmallPackage : SizedPackage
+    public class SmallPackage : Package
     {
-        public decimal PostageInBaseCurrency()
+        public override decimal PostageInBaseCurrency()
         {
             return 120m;
         }

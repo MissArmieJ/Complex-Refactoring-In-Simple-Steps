@@ -1,48 +1,30 @@
-﻿namespace PostageCalculator
+namespace PostageCalculator
 {
-    public class Package
+    public abstract class Package
     {
-        private readonly int _weight;
-        private readonly int _height;
-        private readonly int _width;
-        private readonly int _depth;
-        private SizedPackage _sizedPackage;
+        public abstract decimal PostageInBaseCurrency();
 
-        public Package(int weight, int height, int width, int depth)
+        public static Package WithDimensions(int weight, int height, int width, int depth)
         {
-            _weight = weight;
-            _height = height;
-            _width = width;
-            _depth = depth;
-            _sizedPackage = CreateSizedPackage();
-        }
-
-        public decimal PostageInBaseCurrency()
-        {
-            return _sizedPackage.PostageInBaseCurrency();
-        }
-
-        private SizedPackage CreateSizedPackage()
-        {
-            if (IsSmall())
+            if (IsSmall(depth, width, height, weight))
             {
                 return new SmallPackage();
             }
-            if (IsMedium())
+            if (IsMedium(depth, width, height, weight))
             {
-                return new MediumPackage(_weight);
+                return new MediumPackage(weight);
             }
-            return new LargePackage(_weight, _height, _width, _depth);
+            return new LargePackage(weight, height, width, depth);
         }
 
-        private bool IsMedium()
+        private static bool IsMedium(int depth, int width, int height, int weight)
         {
-            return _weight <= 500 && _height <= 324 && _width <= 229 && _depth <= 100;
+            return weight <= 500 && height <= 324 && width <= 229 && depth <= 100;
         }
 
-        private bool IsSmall()
+        private static bool IsSmall(int depth, int width, int height, int weight)
         {
-            return _weight <= 60 && _height <= 229 && _width <= 162 && _depth <= 25;
+            return weight <= 60 && height <= 229 && width <= 162 && depth <= 25;
         }
     }
 }
