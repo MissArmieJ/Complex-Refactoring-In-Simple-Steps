@@ -48,6 +48,7 @@
     <Compile Include="CalculatorShould.cs" />
     <Compile Include="Currency.cs" />
     <Compile Include="Money.cs" />
+    <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
